@@ -3,3 +3,5 @@ Sort/bin
 *.o
 Sort/insertsort
 .vscode
+test.cpp
+bin
