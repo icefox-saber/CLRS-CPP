@@ -1,7 +1,7 @@
 CXX = g++
 CFLAGS = -std=c++2a -g -Wall
-TARGETS = bin/insertsort bin/selectionsort
-SRCS = insertsort.cpp selectionsort.cpp
+TARGETS = bin/insertsort bin/selectionsort bin/mergesort
+SRCS = insertsort.cpp selectionsort.cpp mergesort.cpp 
 OBJ_DIR = obj
 DEP_DIR = dep
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
@@ -14,6 +14,9 @@ bin/insertsort: $(OBJ_DIR)/insertsort.o | bin
 
 bin/selectionsort: $(OBJ_DIR)/selectionsort.o | bin
 	$(CXX) $(CFLAGS) $(OBJ_DIR)/selectionsort.o -o bin/selectionsort
+
+bin/mergesort: $(OBJ_DIR)/mergesort.o | bin
+	$(CXX) $(CFLAGS) $(OBJ_DIR)/mergesort.o -o bin/mergesort
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR) $(DEP_DIR)
 	$(CXX) $(CFLAGS) -MMD -MP -c $< -o $@

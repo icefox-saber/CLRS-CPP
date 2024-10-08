@@ -1,4 +1,4 @@
-#include "./selectionsort.h"
+#include "selectionsort.h"
 #include "../resourse/print.h"
 
 using namespace std;

@@ -1,4 +1,4 @@
-#include "./insertsort.h"
+#include "insertsort.h"
 #include "../resourse/print.h"
 
 using namespace std;
