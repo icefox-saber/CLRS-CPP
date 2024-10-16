@@ -1,5 +1,5 @@
-#ifndef insert_sort_h
-#define insert_sort_h
+#ifndef insertsort_h
+#define insertsort_h
 
 #include <vector>
 using namespace std;

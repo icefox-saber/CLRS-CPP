@@ -11,4 +11,5 @@ int main(){
     cout<<"after selectionsort:\n";
     print(vec);
 
+    return 0;
 }

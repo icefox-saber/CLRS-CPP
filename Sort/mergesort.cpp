@@ -5,7 +5,9 @@ int main(){
     std::vector<int> vec={4,5,3,6,2,7,1,8};
 
     print(vec);
-    MergeSort(vec,0,vec.size()-1);
+    MergeSort(vec);
     cout<<"after mergesort:\n";
     print(vec);
+
+    return 0;
 }

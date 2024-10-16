@@ -13,4 +13,6 @@ int main(){
     insertsort_nonincrease(vec);
     cout<<"after insertsort_nonincrease:\n";
     print(vec);
+
+    return 0;
 }

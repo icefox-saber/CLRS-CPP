@@ -7,7 +7,7 @@ template <typename T>
 void Merge(std::vector<T> &vec, int l, int mid, int r)
 {
     std::vector<T> L, R;
-    std::vector<int>::iterator b = vec.begin();
+    typename std::vector<T>::iterator b = vec.begin();
     L.assign(b + l, b + mid + 1); // 注意这里的区间是左闭右开
     R.assign(b + mid + 1, b + r + 1);// 注意这里的区间是左闭右开
 
@@ -48,6 +48,12 @@ void MergeSort(std::vector<T> &vec, int l, int r)
     MergeSort(vec, l, mid);
     MergeSort(vec, mid + 1, r);
     Merge(vec, l, mid, r);
+}
+
+template <typename T>
+void MergeSort(std::vector<T> &vec)
+{
+    MergeSort(vec, 0,vec.size()-1);
 }
 
 #endif

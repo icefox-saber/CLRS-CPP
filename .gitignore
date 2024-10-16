@@ -5,3 +5,4 @@ Sort/insertsort
 .vscode
 test.cpp
 bin
+*.out
