@@ -1,5 +1,5 @@
-#ifndef countingsort_h
-#define countingsort_h
+#ifndef radixsort_h
+#define radixsort_h
 
 #include <cmath>
 #include <vector>
