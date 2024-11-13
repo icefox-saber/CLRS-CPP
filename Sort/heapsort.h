@@ -21,6 +21,7 @@ public:
     int right(int i)const { return 2 * i + 2; }
     int parent(int i)const { return (i - 1) / 2; }
 };
+
 template <typename T>
 void heap<T>::setheapsize()
 {

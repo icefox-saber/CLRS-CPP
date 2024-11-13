@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 
-template <class T>
+template <typename T>
 void print(vector<T> &vec)
 {
     for (size_t i = 0; i < vec.size();i++)

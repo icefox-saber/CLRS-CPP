@@ -5,7 +5,7 @@
 using namespace std;
 //   SELECTION-SORT(A)
 //   - Time: O(n^2)
-template <class T>
+template <typename T>
 void selectionsort(vector<T> & vec)
 {
     int n= static_cast<int>(vec.size());

@@ -6,7 +6,7 @@ using namespace std;
 
 //   LINEAR-SEARCH(A)
 //   - Time: O(n)
-template<class T>
+template<typename T>
 int binarySearch(const vector<T> &vec,const T & tar,int l,int r)
 {
     if(l>r)
@@ -32,7 +32,7 @@ int binarySearch(const vector<T> &vec,const T & tar,int l,int r)
     
 }
 
-template<class T>
+template<typename T>
 int binarySearch(const vector<T> &vec,const T & tar)
 {
     return binarySearch(vec, tar, 0, vec.size() - 1);
