@@ -1,8 +1,8 @@
-Sort/bin
 *.d
 *.o
-Sort/insertsort
+*.out
 .vscode
 test.cpp
-bin
-*.out
+bin/
+dep/
+obj/
