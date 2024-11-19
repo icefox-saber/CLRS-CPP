@@ -37,7 +37,7 @@ int random_partition(std::vector<T> &vec, int l, int r)
 template <typename T>
 T select(std::vector<T> & vec,int i,int l,int r)
 {
-    assert(i<=r-l+1);
+    assert(i <= r-l+1);
     
     if(l==r)
         return vec[l];
