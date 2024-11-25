@@ -36,7 +36,7 @@ public:
   void remove(link_node<T> *p);
   void display();
   bool empty();
-  link_node<T> *gethead() { return head; };
+  link_node<T> *gethead() const { return head; };
 };
 
 template <typename T> linklist<T>::linklist() {

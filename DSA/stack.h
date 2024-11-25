@@ -16,7 +16,7 @@ public:
   bool empty();
   void push(const T &x);
   void pop();
-  T top();
+  T top() const;
 };
 
 template <typename T> stack<T>::stack() {}
@@ -39,7 +39,9 @@ template <typename T> void stack<T>::pop() {
 /// @brief get the top element
 /// @tparam T
 /// @return return the top element's key
-template <typename T> T stack<T>::top() { return list.gethead()->next->key; }
+template <typename T> T stack<T>::top() const {
+  return list.gethead()->next->key;
+}
 
 } // namespace CLRS
 
