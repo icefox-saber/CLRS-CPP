@@ -5,11 +5,11 @@
 
 namespace CLRS {
 /// @brief node struct for linklist
-/// @tparam T 
+/// @tparam T
 template <typename T> struct link_node {
   T key;
-  link_node<T> *pre;//pointer to pre node
-  link_node<T> *next;//pointer to next node
+  link_node<T> *pre;  // pointer to pre node
+  link_node<T> *next; // pointer to next node
   link_node(){};
   link_node(const T &k, link_node<T> *p = nullptr, link_node<T> *n = nullptr);
   ~link_node(){};
@@ -20,10 +20,10 @@ link_node<T>::link_node(const T &k, link_node<T> *p, link_node<T> *n)
     : key(k), pre(p), next(n){};
 
 /// @brief double linked list template
-/// @tparam T 
+/// @tparam T
 template <typename T> class linklist {
 private:
-  link_node<T> *head;//pointer to first node(sentinel)
+  link_node<T> *head; // pointer to first node(sentinel)
 
 public:
   linklist();
@@ -36,6 +36,7 @@ public:
   void remove(link_node<T> *p);
   void display();
   bool empty();
+  link_node<T>* gethead(){return head;};
 };
 
 template <typename T> linklist<T>::linklist() {
@@ -73,7 +74,7 @@ template <typename T> link_node<T> *linklist<T>::search(const T &x) {
 }
 
 /// @brief insert a node after head(sentinel)
-/// @tparam T 
+/// @tparam T
 /// @param x new node's key value
 template <typename T> void linklist<T>::prepend(const T &x) {
   link_node<T> *p = new link_node<T>(x, head, head->next);
@@ -82,7 +83,7 @@ template <typename T> void linklist<T>::prepend(const T &x) {
 }
 
 /// @brief insert x after node pointed by p
-/// @tparam T 
+/// @tparam T
 /// @param p pointer to existing node
 /// @param x new node's key
 template <typename T> void linklist<T>::insert(link_node<T> *p, const T &x) {
@@ -92,7 +93,7 @@ template <typename T> void linklist<T>::insert(link_node<T> *p, const T &x) {
 }
 
 /// @brief insert node with key x behind node with key y
-/// @tparam T 
+/// @tparam T
 /// @param y existed node's key
 /// @param x new node's key
 template <typename T> void linklist<T>::insert(const T &y, const T &x) {
@@ -103,7 +104,7 @@ template <typename T> void linklist<T>::insert(const T &y, const T &x) {
 }
 
 /// @brief remove the object pointed by p
-/// @tparam T 
+/// @tparam T
 /// @param p pointer to the object to delete
 template <typename T> void linklist<T>::remove(link_node<T> *p) {
   if (p == head || p == nullptr) {
@@ -117,7 +118,7 @@ template <typename T> void linklist<T>::remove(link_node<T> *p) {
 }
 
 /// @brief remove the object with key x
-/// @tparam T 
+/// @tparam T
 /// @param x key value
 template <typename T> void linklist<T>::remove(const T &x) {
   link_node<T> *p = search(x);
@@ -127,7 +128,7 @@ template <typename T> void linklist<T>::remove(const T &x) {
 }
 
 /// @brief display the list by order head->next
-/// @tparam T 
+/// @tparam T
 template <typename T> void linklist<T>::display() {
   link_node<T> *p = head->next;
   while (p != head) {
@@ -138,12 +139,9 @@ template <typename T> void linklist<T>::display() {
 }
 
 /// @brief check if the list is empty
-/// @tparam T 
+/// @tparam T
 /// @return return ture if list is emptr, else false
-template <typename T> bool linklist<T>::empty()
-{
-  return head->next==head;
-}
+template <typename T> bool linklist<T>::empty() { return head->next == head; }
 
 } // namespace CLRS
 #endif
