@@ -1,6 +1,8 @@
 #ifndef linklist_h
 #define linklist_h
 
+#include <iostream>
+
 namespace CLRS {
 template <typename T> struct link_node {
   T key;
@@ -28,6 +30,7 @@ public:
   void insert(const T &y, const T &x); // insert x after y
   void remove(const T &x);
   void remove(link_node<T> *p);
+  void display();
 };
 
 template <typename T> linklist<T>::linklist() {
@@ -98,6 +101,15 @@ template <typename T> void linklist<T>::remove(const T &x) {
   if (p != nullptr) {
     remove(p);
   }
+}
+
+template <typename T> void linklist<T>::display() {
+  link_node<T> *p = head->next;
+  while (p != head) {
+    std::cout << p->key << ' ';
+    p = p->next;
+  }
+  std::cout << std::endl;
 }
 
 } // namespace CLRS
