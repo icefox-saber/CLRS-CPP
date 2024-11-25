@@ -2,15 +2,16 @@
 #include "../resourse/print.h"
 
 int main(){
-    heap<char> h={'s','d','f','g','h','j','k','l'};
+    
+    CLRS::heap<char> h={'s','d','f','g','h','j','k','l'};
 
-    print(h);
-    build_max_heap(h);
-    cout<<"after build_max_heap:\n";
-    print(h);
-    heapsort(h);
-    cout<<"after heapsort:\n";
-    print(h);
+    CLRS::print(h);
+    CLRS::build_max_heap(h);
+    std::cout<<"after build_max_heap:\n";
+    CLRS::print(h);
+    CLRS::heapsort(h);
+    std::cout<<"after heapsort:\n";
+    CLRS::print(h);
 
     return 0;
 }

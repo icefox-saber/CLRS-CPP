@@ -3,7 +3,9 @@
 
 #include <vector>
 
-template <typename T>
+namespace CLRS
+{
+    template <typename T>
 T min(const std::vector<T> & vec)
 {
     T m = vec[0];
@@ -19,5 +21,6 @@ T min(const std::vector<T> & vec)
     
     return  m;
 }
+} // namespace CLRS
 
 #endif

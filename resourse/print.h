@@ -3,16 +3,18 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
-template <typename T>
-void print(vector<T> &vec)
+namespace CLRS
 {
-    for (size_t i = 0; i < vec.size();i++)
+    template <typename T>
+    void print(std::vector<T> &vec)
     {
-        cout << vec[i] << ' ';
-    }
-    cout << endl;
-};
+        for (std::size_t i = 0; i < vec.size(); i++)
+        {
+            std::cout << vec[i] << ' ';
+        }
+        std::cout << std::endl;
+    };
+} // namespace CLRS
 
 #endif

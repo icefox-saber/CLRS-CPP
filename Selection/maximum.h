@@ -3,21 +3,23 @@
 
 #include <vector>
 
-template <typename T>
-T max(const std::vector<T> & vec)
+namespace CLRS
 {
-    T m = vec[0];
-    std::size_t size = (int) vec.size();
-    for (std::size_t i = 1; i < size - 1; i++)
+    template <typename T>
+    T max(const std::vector<T> &vec)
     {
-        if (m<vec[i])
+        T m = vec[0];
+        std::size_t size = (int)vec.size();
+        for (std::size_t i = 1; i < size - 1; i++)
         {
-            m = vec[i];
+            if (m < vec[i])
+            {
+                m = vec[i];
+            }
         }
-        
+
+        return m;
     }
-    
-    return  m;
-}
+} // namespace CLRS
 
 #endif
