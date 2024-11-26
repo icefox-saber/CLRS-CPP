@@ -1,5 +1,6 @@
 CXX = g++
-CFLAGS = -std=c++2a -g -Wall
+CFLAGS = -std=c++2a -g -Wall -fsanitize=address -fsanitize=leak
+LDFLAGS = -fsanitize=address -fsanitize=leak
 OBJ_DIR = obj
 DEP_DIR = dep
 BIN_DIR = bin
@@ -14,7 +15,7 @@ all: $(TARGETS)
 
 # 自动生成 target 规则
 $(BIN_DIR)/%: $(OBJ_DIR)/%.o | $(BIN_DIR)
-	$(CXX) $(CFLAGS) $< -o $@
+	$(CXX) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
 # 编译 .o 文件并生成依赖文件
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR) $(DEP_DIR)
