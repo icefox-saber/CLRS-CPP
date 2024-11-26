@@ -61,6 +61,11 @@ template <typename T> linklist<T>::linklist() {
 }
 
 template <typename T> linklist<T>::~linklist() {
+  if (head == nullptr)
+  {
+    return;
+  }
+  
   link_node<T> *p = head;
   link_node<T> *q = p;
   p->pre->next = nullptr;
