@@ -30,18 +30,28 @@ public:
   ~linklist();
   link_node<T> *search(const T &x);
   void insert(link_node<T> *p, const T &x);
-  void insert(const T &y, const T &x); // insert x after y
+  void insert(const T &y, const T &x); 
   void remove(const T &x);
   void remove(link_node<T> *p);
   void display();
   bool empty();
   link_node<T> *gethead() const { return head; };
-  T front()const{return head->next->key;};
-  T back()const{return head->pre->key;};
-  void push_front(const T &x){insert(head,x);};
-  void push_back(const T &x){insert(head->pre,x);};
-  void pop_front(){remove(head->next);};
-  void pop_back(){remove(head->pre);}; 
+  /// @brief get first element
+  /// @return the value of first element
+  T front() const { return head->next->key; };
+  /// @brief get last element
+  /// @return the value of first element
+  T back() const { return head->pre->key; };
+  /// @brief push new element x in the first place
+  /// @param x 
+  void push_front(const T &x) { insert(head, x); };
+  /// @brief push new element x in the last place
+  /// @param x 
+  void push_back(const T &x) { insert(head->pre, x); };
+  /// @brief delete the first element
+  void pop_front() { remove(head->next); };
+  /// @brief delete the last element
+  void pop_back() { remove(head->pre); };
 };
 
 template <typename T> linklist<T>::linklist() {
