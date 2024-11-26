@@ -27,10 +27,12 @@ private:
 
 public:
   linklist();
+  linklist(const linklist<T> &other);
+
   ~linklist();
   link_node<T> *search(const T &x);
   void insert(link_node<T> *p, const T &x);
-  void insert(const T &y, const T &x); 
+  void insert(const T &y, const T &x);
   void remove(const T &x);
   void remove(link_node<T> *p);
   void display();
@@ -43,15 +45,21 @@ public:
   /// @return the value of first element
   T back() const { return head->pre->key; };
   /// @brief push new element x in the first place
-  /// @param x 
+  /// @param x
   void push_front(const T &x) { insert(head, x); };
   /// @brief push new element x in the last place
-  /// @param x 
+  /// @param x
   void push_back(const T &x) { insert(head->pre, x); };
   /// @brief delete the first element
   void pop_front() { remove(head->next); };
   /// @brief delete the last element
   void pop_back() { remove(head->pre); };
+  /// @brief clear the linklist, but no delete it
+  void clear();
+  /// @brief copy linklist
+  /// @param other copied linklist
+  /// @return a linklist reference
+  linklist<T> &operator=(const linklist<T> &other);
 };
 
 template <typename T> linklist<T>::linklist() {
@@ -61,11 +69,10 @@ template <typename T> linklist<T>::linklist() {
 }
 
 template <typename T> linklist<T>::~linklist() {
-  if (head == nullptr)
-  {
+  if (head == nullptr) {
     return;
   }
-  
+
   link_node<T> *p = head;
   link_node<T> *q = p;
   p->pre->next = nullptr;
@@ -153,6 +160,43 @@ template <typename T> void linklist<T>::display() {
 /// @tparam T
 /// @return return ture if list is emptr, else false
 template <typename T> bool linklist<T>::empty() { return head->next == head; }
+template <typename T> void linklist<T>::clear() {
+
+  link_node<T> *p = head->next;
+  link_node<T> *q = p->next;
+  while (p != head) {
+    delete p;
+    p = q;
+    q = p->next;
+  }
+  head->pre=head;
+  head->next=head;
+}
+
+template <typename T>
+linklist<T> &linklist<T>::operator=(const linklist<T> &other) {
+  clear();
+  link_node<T> *head_cpy = other.head;
+  link_node<T> *p_cpy = head_cpy->next;
+  while (p_cpy != head_cpy) {
+    push_back(p_cpy->key);
+    p_cpy = p_cpy->next;
+  }
+  return *this;
+}
+
+template <typename T> linklist<T>::linklist(const linklist<T> &other) {
+  head = new link_node<T>(); // 创建新链表的哨兵节点
+  head->pre = head;
+  head->next = head;
+
+  // 遍历 other 链表并深拷贝每个节点
+  link_node<T> *current = other.head->next;
+  while (current != other.head) {
+    push_back(current->key); // 将节点数据插入到新链表中
+    current = current->next;
+  }
+}
 
 } // namespace CLRS
 #endif
