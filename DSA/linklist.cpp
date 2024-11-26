@@ -5,12 +5,12 @@
 int main() {
   CLRS::linklist<int> list;
 
-  // 测试 prepend
-  list.prepend(10);
-  list.prepend(20);
-  list.prepend(30);
+  // 测试 push_front
+  list.push_front(10);
+  list.push_front(20);
+  list.push_front(30);
 
-  std::cout << "After prepend 30, 20, 10:" << std::endl;
+  std::cout << "After push_front 30, 20, 10:" << std::endl;
   list.display();
 
   // 测试 insert

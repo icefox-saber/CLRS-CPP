@@ -28,19 +28,19 @@ template <typename T> bool stack<T>::empty() { return list.empty(); }
 /// @brief push a value into stack
 /// @tparam T
 /// @param x the value to be pushed
-template <typename T> void stack<T>::push(const T &x) { list.prepend(x); }
+template <typename T> void stack<T>::push(const T &x) { list.push_back(x); }
 
 /// @brief pop the top element out, no return
 /// @tparam T
 template <typename T> void stack<T>::pop() {
-  list.remove(list.gethead()->next);
+  list.pop_back();
 }
 
 /// @brief get the top element
 /// @tparam T
 /// @return return the top element's key
 template <typename T> T stack<T>::top() const {
-  return list.gethead()->next->key;
+  return list.back();
 }
 
 } // namespace CLRS

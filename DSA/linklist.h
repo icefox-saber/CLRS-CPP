@@ -29,7 +29,6 @@ public:
   linklist();
   ~linklist();
   link_node<T> *search(const T &x);
-  void prepend(const T &x);
   void insert(link_node<T> *p, const T &x);
   void insert(const T &y, const T &x); // insert x after y
   void remove(const T &x);
@@ -37,6 +36,12 @@ public:
   void display();
   bool empty();
   link_node<T> *gethead() const { return head; };
+  T front()const{return head->next->key;};
+  T back()const{return head->pre->key;};
+  void push_front(const T &x){insert(head,x);};
+  void push_back(const T &x){insert(head->pre,x);};
+  void pop_front(){remove(head->next);};
+  void pop_back(){remove(head->pre);}; 
 };
 
 template <typename T> linklist<T>::linklist() {
@@ -73,16 +78,7 @@ template <typename T> link_node<T> *linklist<T>::search(const T &x) {
   return p;
 }
 
-/// @brief insert a node after head(sentinel)
-/// @tparam T
-/// @param x new node's key value
-template <typename T> void linklist<T>::prepend(const T &x) {
-  link_node<T> *p = new link_node<T>(x, head, head->next);
-  head->next->pre = p;
-  head->next = p;
-}
-
-/// @brief insert x after node pointed by p
+/// @brief insert x, p->next = x
 /// @tparam T
 /// @param p pointer to existing node
 /// @param x new node's key
