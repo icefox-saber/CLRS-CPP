@@ -1,12 +1,12 @@
 #ifndef select5_h
 #define select5_h
 
+#include "../Sort/quicksort.h"
 #include <algorithm>
 #include <array>
 #include <assert.h>
 #include <cmath>
 #include <vector>
-#include "../Sort/quicksort.h"
 
 namespace CLRS {
 
@@ -65,14 +65,13 @@ template <typename T> int select5(std::vector<T> &vec, int i, int l, int r) {
 
   int g = (r - l + 1) / 5;
 
-  for (int j = l, k =0; k < g; j ++,k++) {
-    std::vector<T> vec_5={vec[j], vec[j + g], vec[j + 2 * g], vec[j + 3 * g], vec[j + 4 * g]};
+  for (int j = l, k = 0; k < g; j++, k++) {
+    std::vector<T> vec_5 = {vec[j], vec[j + g], vec[j + 2 * g], vec[j + 3 * g],
+                            vec[j + 4 * g]};
     quickSort(vec_5);
-    for (int i = 0; i < 5; i++)
-    {
-      vec[j+i*g]=vec_5[i];
+    for (int i = 0; i < 5; i++) {
+      vec[j + i * g] = vec_5[i];
     }
-    
   }
 
   int x = select5(vec, g / 2, l + 2 * g, l + 3 * g - 1);
