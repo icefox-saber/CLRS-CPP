@@ -32,16 +32,12 @@ template <typename T> void stack<T>::push(const T &x) { list.push_back(x); }
 
 /// @brief pop the top element out, no return
 /// @tparam T
-template <typename T> void stack<T>::pop() {
-  list.pop_back();
-}
+template <typename T> void stack<T>::pop() { list.pop_back(); }
 
 /// @brief get the top element
 /// @tparam T
 /// @return return the top element's key
-template <typename T> T stack<T>::top() const {
-  return list.back();
-}
+template <typename T> T stack<T>::top() const { return list.back(); }
 
 } // namespace CLRS
 

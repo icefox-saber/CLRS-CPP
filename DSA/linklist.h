@@ -169,8 +169,8 @@ template <typename T> void linklist<T>::clear() {
     p = q;
     q = p->next;
   }
-  head->pre=head;
-  head->next=head;
+  head->pre = head;
+  head->next = head;
 }
 
 template <typename T>

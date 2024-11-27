@@ -23,12 +23,8 @@ template <typename T> queue<T>::~queue() {}
 
 template <typename T> bool queue<T>::empty() { return list.empty(); };
 template <typename T> void queue<T>::enQueue(const T &x) { list.push_back(x); };
-template <typename T> void queue<T>::deQueue() {
-  list.pop_front();
-}
-template <typename T> T queue<T>::front() const {
-  return list.front();
-};
+template <typename T> void queue<T>::deQueue() { list.pop_front(); }
+template <typename T> T queue<T>::front() const { return list.front(); };
 } // namespace CLRS
 
 #endif
