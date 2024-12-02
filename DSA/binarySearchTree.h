@@ -19,9 +19,11 @@ template <typename T> class binarySearchTree {
 private:
   node_binarySearchTree<T> *root;
 
-  /// @brief transplant a subtree, this function will not check if v and u both
-  /// has left or right child, this function will free the memory of u in heap,
-  /// v must be left or right child of u
+  /// @brief transplant a node v to u,v must be left or right child of u
+  ///
+  /// this function will not free the memory of u in heap,
+  ///
+  /// this function will set u's another child as v's
   /// @param u Target
   /// @param v source
   void transplant(node_binarySearchTree<T> *u, node_binarySearchTree<T> *v);
@@ -162,15 +164,19 @@ void binarySearchTree<T>::remove(node_binarySearchTree<T> *n) {
   // n has two child
   node_binarySearchTree<T> *s = successor(n); // s must be in right subtree of s
   // s and n has right subtree can not transplant directly
-  if (s->right != nullptr) {
-    T d = s->data;
+  if (s != n->right) {
     transplant(s, s->right);
-    n->data = d;
+    s->right = n->right;
+    n->right->parent = s;
+    s->parent = n;
+    transplant(n, s);
   }
   //
   else {
     transplant(n, s);
   }
+
+  delete n;
 }
 template <typename T> void binarySearchTree<T>::remove(const T &d) {
   node_binarySearchTree<T> *p = search(d);
@@ -370,7 +376,7 @@ template <typename T>
 void binarySearchTree<T>::transplant(node_binarySearchTree<T> *u,
                                      node_binarySearchTree<T> *v) {
 
-  if (u != nullptr) {
+  if (u != nullptr && v!=nullptr) {
     node_binarySearchTree<T> *p = u->parent;
     if (p != nullptr) // u is not root;
     {
@@ -379,8 +385,24 @@ void binarySearchTree<T>::transplant(node_binarySearchTree<T> *u,
       } else {
         p->right = v;
       }
-      v->parent = p;
-      delete u;
+    }
+    else
+    {
+      root = v;
+    }
+    
+    v->parent = p;
+    if (v == u->left) {
+      v->right = u->right;
+      if (v->right != nullptr) {
+        v->right->parent = v;
+      }
+
+    } else {
+      v->left = u->left;
+      if (v->left != nullptr) {
+        v->left->parent = v;
+      }
     }
   }
 }
