@@ -160,21 +160,23 @@ void binarySearchTree<T>::remove(node_binarySearchTree<T> *n) {
     transplant(n, n->right);
   } else if (n->right == nullptr) {
     transplant(n, n->left);
-  }
-  // n has two child
-  node_binarySearchTree<T> *s = successor(n); // s must be in right subtree of s
-  // s and n has right subtree can not transplant directly
-  if (s != n->right) {
-    transplant(s, s->right);
-    s->right = n->right;
-    n->right->parent = s;
-    s->parent = n;
-    n->right = s;
-    transplant(n, s);
-  }
-  //
-  else {
-    transplant(n, s);
+  } else {
+    // n has two child
+    node_binarySearchTree<T> *s =
+        successor(n); // s must be in right subtree of s
+    // s and n has right subtree can not transplant directly
+    if (s != n->right) {
+      transplant(s, s->right);
+      s->right = n->right;
+      n->right->parent = s;
+      s->parent = n;
+      n->right = s;
+      transplant(n, s);
+    }
+    //
+    else {
+      transplant(n, s);
+    }
   }
 
   delete n;
@@ -367,7 +369,7 @@ template <typename T>
 void binarySearchTree<T>::transplant(node_binarySearchTree<T> *u,
                                      node_binarySearchTree<T> *v) {
 
-  if (u != nullptr && v!=nullptr) {
+  if (u != nullptr && v != nullptr) {
     node_binarySearchTree<T> *p = u->parent;
     if (p != nullptr) // u is not root;
     {
@@ -376,12 +378,10 @@ void binarySearchTree<T>::transplant(node_binarySearchTree<T> *u,
       } else {
         p->right = v;
       }
-    }
-    else
-    {
+    } else {
       root = v;
     }
-    
+
     v->parent = p;
     if (v == u->left) {
       v->right = u->right;
