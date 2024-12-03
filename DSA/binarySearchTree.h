@@ -267,19 +267,17 @@ node_binarySearchTree<T> *
 binarySearchTree<T>::search(const T &x,
                             node_binarySearchTree<T> *const &node) const {
   node_binarySearchTree<T> *res = nullptr;
-  if (node != nullptr) {
-    node_binarySearchTree<T> *p = node;
-    while (p != nullptr) {
-      if (p->data > x) {
-        p = p->left;
-      } else if (p->data < x) {
-        p = p->right;
-      } else {
+  node_binarySearchTree<T> *p = node;
 
-        break;
-      }
+  while (p != nullptr) {
+    if (p->data > x) {
+      p = p->left;
+    } else if (p->data < x) {
+      p = p->right;
+    } else {
+      res = p;
+      break;
     }
-    res = p;
   }
 
   return res;
