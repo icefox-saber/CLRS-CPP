@@ -169,6 +169,7 @@ void binarySearchTree<T>::remove(node_binarySearchTree<T> *n) {
     s->right = n->right;
     n->right->parent = s;
     s->parent = n;
+    n->right = s;
     transplant(n, s);
   }
   //
@@ -315,13 +316,8 @@ binarySearchTree<T>::successor(node_binarySearchTree<T> *const &node) const {
     }
 
   } else {
-    node_binarySearchTree<T> *p = node->right; // must not be nullptr
-    node_binarySearchTree<T> *q = p->left;
-    while (q != nullptr) {
-      p = q;
-      q = p->left;
-    }
-    res = p;
+
+    res = minimum(node->right);
   }
 
   return res;
@@ -360,13 +356,8 @@ binarySearchTree<T>::predecessor(node_binarySearchTree<T> *const &node) const {
     }
 
   } else {
-    node_binarySearchTree<T> *p = node->left; // must not be nullptr
-    node_binarySearchTree<T> *q = p->right;
-    while (q != nullptr) {
-      p = q;
-      q = p->right;
-    }
-    res = p;
+
+    res = maximum(node->left);
   }
 
   return res;
